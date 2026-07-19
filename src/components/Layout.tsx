@@ -1,0 +1,4 @@
+import type { ReactNode } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Boxes, FlaskConical, History, LayoutDashboard, Settings, ArrowLeftRight } from 'lucide-react'
+export default function Layout({children}:{children:ReactNode}){const items=[['/','Tableau',LayoutDashboard],['/produits','Produits',Boxes],['/mouvement','Mouvement',ArrowLeftRight],['/preparation','Préparation',FlaskConical],['/historique','Historique',History],['/parametres','Réglages',Settings]] as const;return <div className="shell"><aside><div className="brand"><div className="logo">SP</div><div><b>Stock Phyto</b><small>Gestion des stocks</small></div></div><nav>{items.map(([to,label,Icon])=><NavLink key={to} to={to} end={to==='/' }><Icon size={20}/><span>{label}</span></NavLink>)}</nav></aside><main>{children}</main></div>}
